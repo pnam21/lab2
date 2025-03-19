@@ -6,14 +6,14 @@ using UnityEngine;
 
 public class Dust : MonoBehaviour
 {
-    [SerializeField] private ParticleSystem particleSystem;
+    [SerializeField] private ParticleSystem _particleSystem;
     private void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Ground"))
         {
-            particleSystem.Play();
+            _particleSystem.Play();
         }
-        else { particleSystem.Stop(); }
+        else { _particleSystem.Stop(); }
     }
 }
 

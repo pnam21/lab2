@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class CrashDetector : MonoBehaviour
+public class Death : MonoBehaviour
 {
-    private CircleCollider2D playerHead;
+    private CircleCollider2D _playerHead;
     [SerializeField] private float reloadDelay = 0.5f;
     [SerializeField] private ParticleSystem crashEffect;
     [SerializeField] private AudioClip crashSound;
@@ -13,18 +13,18 @@ public class CrashDetector : MonoBehaviour
 
     private void Start()
     {
-        playerHead = GetComponent<CircleCollider2D>();
+        _playerHead = GetComponent<CircleCollider2D>();
         hasCrashed = false;
     }
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (!hasCrashed && col.gameObject.CompareTag("Ground") && playerHead.IsTouching(col.collider))
+        if (!hasCrashed && col.gameObject.CompareTag("Ground") && _playerHead.IsTouching(col.collider))
         {
             Debug.Log("Ouch!");
             crashEffect.Play();
             GetComponent<AudioSource>().PlayOneShot(crashSound);
-            GetComponent<PlayerController>().DisableInput();
+            GetComponent<GameManager>().DisableInput();
             hasCrashed = true;
             Invoke(nameof(ReloadScene), reloadDelay);
         }
