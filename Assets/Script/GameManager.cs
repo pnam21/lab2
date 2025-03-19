@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private float torqueAmount = 15f;
+    [SerializeField] private float torqueAmount = 35f;
     [SerializeField] private float boostSpeed = 45f;
     [SerializeField] private float normalSpeed = 25f;
     [SerializeField] bool canPlay;

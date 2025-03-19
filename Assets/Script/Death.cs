@@ -11,6 +11,7 @@ public class Death : MonoBehaviour
     [SerializeField] private AudioClip crashSound;
     [SerializeField] private bool hasCrashed;
 
+    ScoreKeeper scoreKeeper;
     private void Start()
     {
         _playerHead = GetComponent<CircleCollider2D>();
@@ -25,12 +26,16 @@ public class Death : MonoBehaviour
             crashEffect.Play();
             GetComponent<AudioSource>().PlayOneShot(crashSound);
             GetComponent<GameManager>().DisableInput();
-            hasCrashed = true;
-            Invoke(nameof(ReloadScene), reloadDelay);
+            hasCrashed = true; 
+            LevelManager levelManager = FindFirstObjectByType<LevelManager>();
+            //if (levelManager != null)
+            //{
+                levelManager.LoadStage1();
+            //}
+            //else
+            //{
+            //    Debug.LogError("dont find!");
+            //}
         }
-    }
-    private void ReloadScene()
-    {
-        SceneManager.LoadScene(0);
     }
 }
