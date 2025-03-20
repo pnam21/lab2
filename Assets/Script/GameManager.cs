@@ -5,9 +5,9 @@ using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private float torqueAmount = 35f;
-    [SerializeField] private float boostSpeed = 45f;
-    [SerializeField] private float normalSpeed = 25f;
+    [SerializeField] private float torqueAmount;
+    [SerializeField] private float boostSpeed;
+    [SerializeField] private float normalSpeed;
     [SerializeField] bool canPlay;
     private Rigidbody2D _rb2D;
     private SurfaceEffector2D _surfaceEffector2D;

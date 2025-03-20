@@ -18,7 +18,7 @@ public class ScoreDisplay : MonoBehaviour
 
     void Update()
     {
-        scoreText.text = scoreKeeper.GetScore() < 0 ? scoreKeeper.GetScore().ToString() : scoreKeeper.GetScore().ToString("");
+        scoreText.text = scoreKeeper.GetScore().ToString() ;
     }
     public void ShowPoint(int score)
     {
